@@ -16,35 +16,36 @@
 <ion-content padding>
 	<ion-list no-lines>
 	<ion-item>
-			<ion-grid>
-				<ion-row>
-					<ion-col>
-						<ion-select interface='popover'>
-							
-						</ion-select>
-					</ion-col>
-					<ion-col>
-						<ion-select interface='popover'>
-							
-						</ion-select>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-col>
-						<ion-select interface='popover'>
-						
-						</ion-select>
-					</ion-col>
-				</ion-row>
-			</ion-grid>
-		</ion-item>
+		<ion-label color="primary" stacked>Syllabus</ion-label>
+		<ion-select (ionChange)="syllabus_selected($event)">
+			<ion-option *ngFor='let syllabus of syllabi'>{{syllabus.syllabus_name}}</ion-option>
+		</ion-select>
+	</ion-item>
+	<ion-item>
+		<ion-label color="primary" stacked>Subject</ion-label>	
+		<ion-select (ionChange)="subject_selected($event)">
+			<ion-option *ngFor='let subject of subjects'>{{subject.subject_name}}</ion-option>				
+		</ion-select>
+	</ion-item>
+	<ion-item>
+		<ion-label color="primary" stacked>Topic</ion-label>
+		<ion-select (ionChange)="topic_selected($event)">
+			<ion-option *ngFor='let topic of topics'>{{topic.name}}</ion-option>		
+		</ion-select>
+	</ion-item>	
 		<ion-item>
 			<ion-label color="primary" stacked>Question Text</ion-label>
 			<ion-textarea></ion-textarea>
 		</ion-item>
-		<ion-item *ngFor='let option of options'>
-			<ion-input type="text" >{{option.id}}</ion-input>
-			<ion-checkbox></ion-checkbox>
+		<ion-item *ngFor="let option of options; let i=index">
+			<ion-input type="text"></ion-input>
+		</ion-item>
+		<ion-item>
+		<ion-label color="primary" stacked>Correct Answer:</ion-label>
+			<ion-select>
+				<ion-option *ngFor='let option of options'>
+				</ion-option>		
+			</ion-select>
 		</ion-item>
 		<ion-item>
 		<button ion-button icon-only outline>
