@@ -9,6 +9,7 @@ import {TabsPage} from '../pages/tabs/tabs'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { FileTransfer } from '@ionic-native/file-transfer';
 
 import { HttpModule } from '@angular/http';
 
@@ -34,6 +35,7 @@ import { HttpModule } from '@angular/http';
   providers: [
     StatusBar,
     SplashScreen,
+    FileTransfer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
