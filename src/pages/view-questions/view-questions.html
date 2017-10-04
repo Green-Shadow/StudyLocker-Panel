@@ -14,5 +14,10 @@
 
 
 <ion-content padding>
-
+<ion-card *ngFor='let question of questions'>
+  <ion-card-content>
+  <h3>ID:{{question.id}}</h3>
+   <h2>{{question.q_text}}</h2>
+  </ion-card-content>
+</ion-card>
 </ion-content>

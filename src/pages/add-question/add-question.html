@@ -35,11 +35,14 @@
 	</ion-item>	
 		<ion-item>
 			<ion-label color="primary" stacked>Question Text</ion-label>
-			<ion-textarea></ion-textarea>
+			<ion-textarea (ionChange) = 'upd_q_text($event.value);'></ion-textarea>
 		</ion-item>
-		<ion-item *ngFor="let option of options; let i=index">
+		<ion-list no-lines>
+			<ion-label color="primary" stacked>Options:</ion-label>
+			<ion-item *ngFor="let option of options; let i=index">
 			<ion-input type="text" placeholder={{i+1}} (ionChange)="update_option($event.value,i);"></ion-input>
 		</ion-item>
+		</ion-list>
 		<ion-item>
 			<button ion-button icon-only outline (click)="add_option()">
   				<ion-icon name="add"></ion-icon>
@@ -50,18 +53,17 @@
 		</ion-item>
 		<ion-item>
 		<ion-label color="primary" stacked>Correct Answer:</ion-label>
-			<ion-select>
+			<ion-select (ionChange)=correct_ans($event)>
 				<ion-option *ngFor='let option of options'>{{option.text}}</ion-option>		
 			</ion-select>
 		</ion-item>
 		<ion-item>
-			<button ion-button icon-start>
-  			<ion-icon name="image"></ion-icon>
-  				Upload Image
-			</button>
+			<input ion-button type="file" name="file" id="file" accept="image/*" (change)="uploadImage($event)" class="inputfile">
+			<label ion-button for="file">Add question image</label>
+			<img [src]="imageSrc">
 		</ion-item>
 		<ion-item>
-			<button ion-button>Add</button>
+			<button ion-button (click)="add_question()">Add</button>
 		</ion-item>
 
 
